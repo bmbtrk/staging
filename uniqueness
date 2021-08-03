@@ -1,0 +1,30 @@
+  
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My First HTML</title>
+  <meta charset="UTF-8">
+  <script type="text/javascript">
+function bemobCb(params) {
+    var t = params.trackingDomain+'/click/';
+    var re = new RegExp(t+'?(\\d*)');
+    var e = document.querySelectorAll('a[href*="'+t+'"]');
+    for (var i = 0; i < e.length; i++) {
+        var ex = re.exec(e[i].href);
+        if (ex) {
+            e[i].href = params.ctaSecureUrl.replace('%%OFFER_NUMBER%%', ex[1] || 1);
+        }
+    }
+}
+</script>
+<script type="text/javascript">!function(){var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src="https://4hp4o.click.bemobcloud.com/landing/32fd5bbe-2ed7-40f5-9df5-496529c167b4?callback=bemobCb&rule=1&path=1&landing=1&"+window.location.search.substring(1);var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)}();</script><noscript><img src="https://4hp4o.click.bemobcloud.com/landing/32fd5bbe-2ed7-40f5-9df5-496529c167b4?rule=1&path=1&landing=1" alt=""></noscript>
+</head>
+<body>
+
+<p>The HTML head element contains meta data.</p>
+<p>Meta data is data about the HTML document.</p>
+
+<a href="https://4hp4o.click.bemobcloud.com/click/1?ns=c%3D32fd5bbe-2ed7-40f5-9df5-496529c167b4..l%3D7ee378c3-16ee-41e8-9316-ea035667d4d7..a%3D0..b%3D0">Click me!</a>
+
+</body>
+</html>
