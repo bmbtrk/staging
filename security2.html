@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BeMob Simple Landing</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+<script>
+function check(secretKey, ttl, signature) {
+    try {
+        let sign = atob(signature);
+        sign = JSON.parse(sign);
+        if (!sign.timestamp || !sign.hash) return false;
+        const signedHash = CryptoJS.HmacSHA1(sign.timestamp, secretKey).toString();
+        if (signedHash !== sign.hash || sign.timestamp < (((new Date().getTime() / 1000) | 0) - ttl).toString()) return false;
+        return true;
+    } catch (err) {
+        return false;
+    }
+}
+
+const secretKey = 'NDdlNWQzMWQ1OWM3NGNkNTQyNzM3YTJiZTNmM2NjMjQxMGQ2M2RjOQ=='; // Your secret key
+
+const ttl = 60;
+const signature = new URL(document.location.href).searchParams.get('key');
+    
+
+if(!check(secretKey, ttl, signature))
+    document.location.href = fallbackUrl;
+</script>
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">BeMob Simple Landing</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container theme-showcase" role="main">
+        <div class="jumbotron">
+            <h1>BeMob Simple Landing</h1>
+            <p>
+                <a href="https://riycy.click.bemobcloud.com/click" class="btn btn-success">Click me!</a>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
