@@ -26,9 +26,11 @@ function check(secretKey, ttl, signature) {
 }
 
 const secretKey = 'NDdlNWQzMWQ1OWM3NGNkNTQyNzM3YTJiZTNmM2NjMjQxMGQ2M2RjOQ=='; // Your secret key
+const fallbackUrl = 'https://www.google.com/'; // Redirect URL for users who didn't pass the check
 
 const ttl = 60;
 const signature = new URL(document.location.href).searchParams.get('key');
+    
 
 if(!check(secretKey, ttl, signature))
     document.location.href = fallbackUrl;
